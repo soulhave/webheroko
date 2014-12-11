@@ -24,6 +24,7 @@
 	<build>
 		<finalName>webheroko</finalName>
 		<plugins>
+			<!-- Compilador --> 
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
@@ -33,6 +34,7 @@
 					<target>1.7</target>
 				</configuration>
 			</plugin>
+			<!-- Jetty Local -->
 			<plugin>
 				<groupId>org.eclipse.jetty</groupId>
 				<artifactId>jetty-maven-plugin</artifactId>
@@ -45,6 +47,17 @@
 					<war>${project.basedir}/target/webheroko.war</war>
 				</configuration>
 			</plugin>
+			<!-- Heroku Deploy -->
+            <plugin>
+              <groupId>com.heroku.sdk</groupId>
+              <artifactId>heroku-maven-plugin</artifactId>
+              <version>0.1.9</version>
+              <configuration>
+                <appName>immense-lowlands-2381</appName>
+                <warFile>${project.basedir}/target/webheroko.war</warFile>
+              	<jdkVersion>1.7</jdkVersion>
+              </configuration>
+            </plugin>			
 		</plugins>
 	</build>
 </project>
